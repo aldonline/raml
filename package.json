@@ -1,7 +1,7 @@
 {
   "name": "raml",
   "description": "Radioactive Markup Language ( part of the Radioactive Framework )",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Aldo Bucchi <aldo.bucchi@gmail.com>",
   "engines": {
     "node": "0.8.x"
