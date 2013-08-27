@@ -24,7 +24,11 @@
     "coffee-script": "~1.6.3"
   },
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "build": "coffee -c lib/ lib/util lib/raml",
+    "clean": "rm lib/*.js lib/util/*.js lib/raml/*.js",
+    "prepublish": "npm run build",
+    "postpublish": "npm run clean"
   },
   "homepage": "https://github.com/aldonline/raml"
 }
