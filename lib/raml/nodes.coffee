@@ -37,9 +37,11 @@ class InsertionNode extends Node
 
 class TextNode extends Node
   constructor: ( @tag_data, @parent = undefined ) ->
+    @cancellators = []
     nd = @tag_data
     document = window?.document or $('body')[0].ownerDocument
     @node = node = document.createTextNode('')
+    @$elm = $ @node
     @parent?.$elm.append node
     switch typeof ( c = nd.content )
       when 'function'
@@ -47,6 +49,13 @@ class TextNode extends Node
           throw err if err?
           node.nodeValue = String res
       when 'string', 'number' then node.nodeValue = String c
+  destroy: ->
+    c() for c in @cancellators
+    @$elm.remove()
+    # GC ettiquette
+    delete @cancellators
+    delete @parent
+
 
 # http://stackoverflow.com/questions/1544317/jquery-change-type-of-input-field
 class ElementNode extends Node
