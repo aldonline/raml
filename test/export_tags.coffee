@@ -4,7 +4,7 @@ $ = require 'jquery'
 
 R = require './R'
 
-describe 'radioactive.tags', ->
+describe 'raml.tags', ->
   it 'should contain functions that generate nodes', ->
     node = R.tags.a href:'#'
     node.nodeName.should.equal 'A'
